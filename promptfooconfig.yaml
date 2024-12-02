@@ -1,0 +1,41 @@
+# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+
+# Learn more about building a configuration: https://promptfoo.dev/docs/configuration/guide
+
+description: "Our Fourth Prompt Test"
+
+prompts:
+  - "Answer the following question: {{question}}"  # control prompt
+  - "Answer the following question. This is very important to my career!: {{question}}"  # emotional stimuli
+  - "You are an expert Astronomer. Answer the following question: {{question}}"  # persona
+  - "Answer the following question. Let's think about this step-by-step: {{question}}"  # Chain of Thought
+
+defaultTest:  # for large LLM tests
+  options:
+    provider: openai:gpt-4o-mini
+
+providers:
+  # Did not setup API Keys yet, so this has not been set up under Secrets and this code has not been run yet.
+  - id: "openai:gpt-4o-mini"    # ChatGPT model
+    config: 
+      temperature: 1.0
+      max_tokens: 1000
+      apiKeyEnvar: OPENAI_API_KEY   
+  - id: "anthropic:messages:claude-3-5-sonnet-20240620"    # Anthropic model
+    config: 
+      temperature: 1.0
+      max_tokens: 1000
+      apiKeyEnvar: ANTHROPIC_API_KEY  
+  - id: "google:gemini-1.5-flash"    # Google model
+    config: 
+      temperature: 1.0
+      maxOutputTokens: 1000
+      apiKeyEnvar: OPENAI_API_KEY   
+
+
+
+tests:  # use a Google Sheet for large amounts of questions
+https://docs.google.com/spreadsheets/d/1sakFpeStGwuS0smwUGleA6gavlO1285kBPLmoiUq1aQ/edit?gid=0#gid=0
+
+# Output as a CSV file
+outputPath: fourthprompttest_results.csv
